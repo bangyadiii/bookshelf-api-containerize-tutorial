@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const init = async () => {
     const rest = Hapi.server({
-        port: parseInt(process.env.PORT, 10) ?? 5000,
+        port: parseInt(process.env.PORT, 10) || 9000,
         host: process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1",
         routes: {
             cors: {
@@ -12,9 +12,11 @@ const init = async () => {
             },
         },
     });
+
     rest.route(routes);
 
     await rest.start();
+    // eslint-disable-next-line no-console
     console.log(`server running at ${rest.info.uri}`);
 };
 
