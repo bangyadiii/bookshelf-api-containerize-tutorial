@@ -98,8 +98,9 @@ jobs:
                   --image "gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}" \
                   --platform managed \
                   --port 5000 \
-                  --region ${{ env.REGION }}
-                  --allow-unauthenticated
+                  --region ${{ env.REGION }} \
+                  --allow-unauthenticated \
+                  --max-instances 3 
 
             # If required, use the Cloud Run url output in later steps
             - name: Show Output
