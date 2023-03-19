@@ -95,13 +95,11 @@ jobs:
       - name: Deploy to Cloud Run 
         id: deploy
         run: |-
-          gcloud run deploy  "${{ env.SERVICE }}" \
-          --region "${{ env.REGION }}" \
-          --image "gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}" \
-          --platform "managed" \
-          --port 5000 \ 
-          --allow-unauthenticated \ 
-          --quiet
+          gcloud run deploy ${env.SERVICE} \
+          --image gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }} \
+          --platform managed \
+          --port 5000 \
+          --allow-unauthenticated
 
       # If required, use the Cloud Run url output in later steps
       - name: Show Output
