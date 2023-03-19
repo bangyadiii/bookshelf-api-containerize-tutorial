@@ -95,7 +95,7 @@ jobs:
               id: deploy
               run: |-
                   gcloud run deploy ${{ env.SERVICE }} \
-                  --image gcr.io/snappy-analog-380816/backend-basic-image-for-cloud-run \
+                  --image "gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}" \
                   --platform managed \
                   --port 5000 \
                   --region ${{ env.REGION }}
