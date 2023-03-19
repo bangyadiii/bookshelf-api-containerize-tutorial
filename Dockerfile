@@ -5,7 +5,7 @@ FROM node:16-alpine3.16
 WORKDIR /bookshelf-platform
 
 # Copy project
-COPY  . .
+COPY  . /bookshelf-platform/
 
 # 4. Install library based on package.json
 RUN npm install
